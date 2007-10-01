@@ -203,11 +203,11 @@ Complexity : O(1)
 
 Complexity : O(|x|)
 
-  * `contin\_if(x\ y\ y) --> y`
+  * `contin_if(x y y) --> y`
 
 Complexity : O(|y|)
 
-  * `contin\_if(x op(y z)\ op(y w)) --> op(y contin_if(x z w))`
+  * `contin_if(x op(y z) op(y w)) --> op(y contin_if(x z w))`
 
 When op in `{+,*,/}`. If op is `/` the order of the arguments must be kept.
 
