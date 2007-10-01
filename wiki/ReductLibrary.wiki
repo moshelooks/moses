@@ -22,7 +22,7 @@ possibilities to consider, and hence fewer rules to encode.
 The first stage of _Reduct_ development will cover normal forms for Boolean
 formulae, real-valued expressions, and mixed Boolean-real expressions involving
 conditionals, described herein. Later extensions will also handle list
-manipulation, iteration, procedural abstractions ( http://moses.googlecode.com/files/lambda.png s), temporal and
+manipulation, iteration, procedural abstractions (http://moses.googlecode.com/files/lambda.png s), temporal and
 spatial primitives and identities, etc.
 
 * GeneralNormalForm
@@ -70,8 +70,8 @@ The implementation is in C++. It need not be obsessively coded for speed, but
 obvious slowdowns (e.g., needlessly converting objects to and from strings)
 should be avoided. Many parts have already been implemented, including the
 complete Boolean normal form as described above. The basic representation is
-based on [http://www.aei.mpg.de/~peekas/tree/tree.h tree.hh], a simple STL-like
-class for representing %$n$%-ary trees. The basic interface should be something
+based on [http://www.aei.mpg.de/~peekas/tree/tree.h tree.h], a simple STL-like
+class for representing ,,n,,-ary trees. The basic interface should be something
 like the following set of functions:
 {{{
   void logical_reduce(vtree&);
@@ -89,7 +89,7 @@ some node in the tree, and does simplifications only relating to the subtree
 rooted in the given node. These functions should return iterators pointing at
 the nodes that they are called on, if the node still exists after reduction, or
 whatever node takes its place (e.g., if it is replaced by one of its
-children). If the entire subtree rooted in the node is removed, then an %$end()$%
+children). If the entire subtree rooted in the node is removed, then an `end()`
 iterator should be returned. I believe that it is possible to implement the
 system in such a way that such calls to these functions will not invalidate the
 node's parent (if it exists); if not, the the return value here will need to be
