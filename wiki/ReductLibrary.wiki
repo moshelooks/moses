@@ -1,3 +1,4 @@
+#summary The =Reduct= Library: Reducing Programs to Normal Form summary
 = The _Reduct_ Library: Reducing Programs to Normal Form =
 == Concepts ==
 The general goal of reducing programs to normal form is to eliminate
@@ -46,14 +47,12 @@ Some possible (advanced) test problems:
 
 The systems should also include the option of using a more expensive method for
 testing the semantic equivalence between expressions. One way to do this is via
-random probing. The report <a
-href="http://www.cse.unl.edu/~sscott/students/tfisher.pdf">``Probabilistic
-Checks for the Equivalence of Mathematical Expressions''</a>, by T. Fisher,
+random probing. The report [http://www.cse.unl.edu/~sscott/students/tfisher.pdf ``Probabilistic Checks for the Equivalence of Mathematical Expressions'' ], by T. Fisher,
 describes a useful way of doing so for real-value formulae based on rounded
 interval arithmetic (to correct for rounding errors in floating-point
 calculations). Computing intervals for real-valued expressions is a useful
 capability for other areas as well, so it is worth implementing according to an
-efficient and general design (note that [[http://www.boost.org][Boost]] has an
+efficient and general design (note that [http://www.boost.org Boost] has an
 interval library that may be used here if convenient).
 
 Equivalence testing should always proceed through stages, doing the fastest
