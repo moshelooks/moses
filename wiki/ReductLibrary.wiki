@@ -22,7 +22,7 @@ possibilities to consider, and hence fewer rules to encode.
 The first stage of _Reduct_ development will cover normal forms for Boolean
 formulae, real-valued expressions, and mixed Boolean-real expressions involving
 conditionals, described herein. Later extensions will also handle list
-manipulation, iteration, procedural abstractions (%$\lambda$%s), temporal and
+manipulation, iteration, procedural abstractions ( http://moses.googlecode.com/files/lambda.png s), temporal and
 spatial primitives and identities, etc.
 
 * GeneralNormalForm
