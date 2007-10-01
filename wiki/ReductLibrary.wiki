@@ -1,4 +1,3 @@
-#summary The =Reduct= Library: Reducing Programs to Normal Form summary
 = The _Reduct_ Library: Reducing Programs to Normal Form =
 == Concepts ==
 The general goal of reducing programs to normal form is to eliminate
