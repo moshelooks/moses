@@ -1,3 +1,4 @@
+#summary The =Reduct= Library: Reducing Programs to Normal Form summary
 = The _Reduct_ Library: Reducing Programs to Normal Form =
 == Concepts ==
 The general goal of reducing programs to normal form is to eliminate
@@ -70,7 +71,7 @@ obvious slowdowns (e.g., needlessly converting objects to and from strings)
 should be avoided. Many parts have already been implemented, including the
 complete Boolean normal form as described above. The basic representation is
 based on [http://www.aei.mpg.de/~peekas/tree/tree.h tree.h], a simple STL-like
-class for representing %$n$%-ary trees. The basic interface should be something
+class for representing ,,n,,-ary trees. The basic interface should be something
 like the following set of functions:
 {{{
   void logical_reduce(vtree&);
