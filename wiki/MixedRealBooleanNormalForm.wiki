@@ -13,7 +13,7 @@ Reduction rules for these functions should be at least as follows:
 
 http://moses.googlecode.com/files/mrb_02.png
 
-A %$\dagger$% is a note that indicates the use of protected operators. Protection is used in evolutionary computation (particularly genetic programming) when an the result of an operators is not defined for the whole desired range. For example, `x/0` is defined as `1` for all `x` (`1` is chosen so that `x/x` will always be `1`). Similarly http://moses.googlecode.com/files/mrb_03a.png is redefined
+A http://moses.googlecode.com/files/mrb_03c.png is a note that indicates the use of protected operators. Protection is used in evolutionary computation (particularly genetic programming) when an the result of an operators is not defined for the whole desired range. For example, `x/0` is defined as `1` for all `x` (`1` is chosen so that `x/x` will always be `1`). Similarly http://moses.googlecode.com/files/mrb_03a.png is redefined
 as http://moses.googlecode.com/files/mrb_03b.png , etc. 
  
 would render a rule problematic - this is not an immediate concern, however, as
