@@ -1,4 +1,4 @@
-#summary The _Reduct_ Library: Reducing Programs to Normal Form summary
+#summary The Reduct Library: Reducing Programs to Normal Form summary
 = The _Reduct_ Library: Reducing Programs to Normal Form =
 == Concepts ==
 The general goal of reducing programs to normal form is to eliminate
@@ -89,7 +89,7 @@ some node in the tree, and does simplifications only relating to the subtree
 rooted in the given node. These functions should return iterators pointing at
 the nodes that they are called on, if the node still exists after reduction, or
 whatever node takes its place (e.g., if it is replaced by one of its
-children). If the entire subtree rooted in the node is removed, then an `end()`
+children). If the entire subtree rooted in the node is removed, then an %$end()$%
 iterator should be returned. I believe that it is possible to implement the
 system in such a way that such calls to these functions will not invalidate the
 node's parent (if it exists); if not, the the return value here will need to be
