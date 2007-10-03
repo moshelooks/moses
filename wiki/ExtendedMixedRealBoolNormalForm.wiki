@@ -236,3 +236,7 @@ All these rules have complexity O(1).
 Some ideas :
 
 1) develop then reduce and check if better
+
+
+
+-- Nil Geisweiller
