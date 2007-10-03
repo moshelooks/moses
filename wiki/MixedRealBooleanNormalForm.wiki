@@ -22,3 +22,6 @@ protected operators may be simply be avoided.
 The paper [http://www.cas.mcmaster.ca/~mohrens/JSC.pdf A Normal Form for Function Rings of Piecewise Functions] contains additional transformation rules and techniques that should be useful (what they call _step_  is called _impulse_  here).
 
 It should be possible to improve simplification of mixed expressions by integrating interval arithmetic to propagate constraints. For example, if some input variable `foo` is known to lie in `[-3,5]` and `sin(x)` is known to lie in `[-1, 1]` for all `x`, and `x*x` is known to lie in [x,,absmin,,`*` x,,absmin,, , x,,absmax,,`*` x,,absmax,,] for all `x` (and an analogous rule is encoded for general multiplication) we can infer that `foo*foo*sin(x)` must lie in `[-25,25]`, and therefore that `0 < 26+foo*foo*sin(x)` is in always true. This is not an urgent priority, but it should not be an extremely difficult extension to add later (see below for more on interval arithmetic).
+
+
+-- Moshe Looks
