@@ -1,0 +1,10 @@
+MOSES - Meta-optimizing Semantic Evolutionary Search, C++ Implementation
+Copyright 2005-2007 by Moshe Looks & Novamente LLC
+
+Portions of this software were developed independently by Moshe Looks.
+
+Portions of this software were developed at Novamente LLC.
+
+Portions of this software are based on tree.hh by Kasper Peeters
+(http://www.aei.mpg.de/~peekas/tree/) and used with permission (for within this
+project only).

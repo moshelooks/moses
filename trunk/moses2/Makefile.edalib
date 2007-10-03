@@ -1,0 +1,73 @@
+NAME = edalib
+EXECS =  onemax nmax continmax ontomax
+SUBDIRS = util eda combo
+
+include Makefile.base
+
+# DO NOT DELETE
+
+util/lazy_random_selector.o: util/lazy_random_selector.h util/hash_map.h
+util/lazy_random_selector.o: util/numeric.h
+util/tree.o: util/tree.h
+eda/field_set.o: eda/field_set.h eda/eda.h eda/using.h util/functional.h
+eda/field_set.o: util/numeric.h util/tree.h util/foreach.h util/dorepeat.h
+eda/initialization.o: eda/initialization.h eda/field_set.h eda/eda.h
+eda/initialization.o: eda/using.h util/functional.h util/numeric.h
+eda/initialization.o: util/tree.h util/foreach.h
+eda/local_structure.o: eda/local_structure.h eda/field_set.h eda/eda.h
+eda/local_structure.o: eda/using.h util/functional.h util/numeric.h
+eda/local_structure.o: util/tree.h util/foreach.h util/digraph.h
+eda/local_structure.o: util/algorithm.h util/selection.h util/hash_map.h
+eda/local_structure.o: util/dorepeat.h
+combo/action.o: combo/action.h
+combo/action_eval.o: combo/action_eval.h combo/vertex.h util/hash_set.h
+combo/action_eval.o: util/tree.h util/numeric.h combo/action.h
+combo/action_eval.o: combo/perception.h util/exception.h combo/using.h
+combo/action_eval.o: combo/tree_type.h util/hash_map.h
+combo/assumption.o: combo/assumption.h combo/vertex.h util/hash_set.h
+combo/assumption.o: util/tree.h util/numeric.h combo/action.h
+combo/assumption.o: combo/perception.h
+combo/complexity.o: combo/complexity.h combo/vertex.h util/hash_set.h
+combo/complexity.o: util/tree.h util/numeric.h combo/action.h
+combo/complexity.o: combo/perception.h combo/using.h
+combo/eval.o: combo/eval.h combo/vertex.h util/hash_set.h util/tree.h
+combo/eval.o: util/numeric.h combo/action.h combo/perception.h
+combo/eval.o: combo/tree_type.h util/hash_map.h util/exception.h
+combo/eval.o: combo/using.h util/foreach.h combo/action_eval.h
+combo/perception.o: combo/perception.h
+combo/tree_type.o: combo/tree_type.h combo/vertex.h util/hash_set.h
+combo/tree_type.o: util/tree.h util/numeric.h combo/action.h
+combo/tree_type.o: combo/perception.h util/hash_map.h util/exception.h
+combo/tree_type.o: combo/using.h
+combo/vertex.o: combo/vertex.h util/hash_set.h util/tree.h util/numeric.h
+combo/vertex.o: combo/action.h combo/perception.h
+main/onemax.o: main/edaopt.h eda/scoring_functions.h eda/field_set.h
+main/onemax.o: eda/eda.h eda/using.h util/functional.h util/numeric.h
+main/onemax.o: util/tree.h util/foreach.h eda/termination.h
+main/onemax.o: eda/local_structure.h util/digraph.h util/algorithm.h
+main/onemax.o: eda/replacement.h eda/scoring.h util/lazy_random_selector.h
+main/onemax.o: util/hash_map.h eda/logging.h eda/optimize.h
+main/onemax.o: eda/instance_set.h util/selection.h util/dorepeat.h
+main/nmax.o: main/edaopt.h eda/scoring_functions.h eda/field_set.h eda/eda.h
+main/nmax.o: eda/using.h util/functional.h util/numeric.h util/tree.h
+main/nmax.o: util/foreach.h eda/termination.h eda/local_structure.h
+main/nmax.o: util/digraph.h util/algorithm.h eda/replacement.h eda/scoring.h
+main/nmax.o: util/lazy_random_selector.h util/hash_map.h eda/logging.h
+main/nmax.o: eda/optimize.h eda/instance_set.h util/selection.h
+main/nmax.o: util/dorepeat.h
+main/continmax.o: main/edaopt.h eda/scoring_functions.h eda/field_set.h
+main/continmax.o: eda/eda.h eda/using.h util/functional.h util/numeric.h
+main/continmax.o: util/tree.h util/foreach.h eda/termination.h
+main/continmax.o: eda/local_structure.h util/digraph.h util/algorithm.h
+main/continmax.o: eda/replacement.h eda/scoring.h util/lazy_random_selector.h
+main/continmax.o: util/hash_map.h eda/logging.h eda/optimize.h
+main/continmax.o: eda/instance_set.h util/selection.h util/dorepeat.h
+main/continmax.o: eda/initialization.h
+main/ontomax.o: main/edaopt.h eda/scoring_functions.h eda/field_set.h
+main/ontomax.o: eda/eda.h eda/using.h util/functional.h util/numeric.h
+main/ontomax.o: util/tree.h util/foreach.h eda/termination.h
+main/ontomax.o: eda/local_structure.h util/digraph.h util/algorithm.h
+main/ontomax.o: eda/replacement.h eda/scoring.h util/lazy_random_selector.h
+main/ontomax.o: util/hash_map.h eda/logging.h eda/optimize.h
+main/ontomax.o: eda/instance_set.h util/selection.h util/dorepeat.h
+main/ontomax.o: eda/initialization.h

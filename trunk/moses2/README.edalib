@@ -1,0 +1,49 @@
+EDALIB:
+A High-Performance Library for Building Estimation-of-Distribution Algorithms, 
+written in high-level C++
+Moshe Looks ~ moshe@metacog.org ~ 3/01/07
+
+Types 
+
+score_t a numeric type used to represent an instance's scores (fitness levels).
+
+Concepts
+
+Scoring Policy 
+Input: const instance&
+Output: score_t
+
+Termination Policy
+Inputs: A binary predicate taking a range of scores and returning
+true iff they are good enough to cease optimization.
+
+Selection Policy - A function taking in an input range, and output range of
+instances, and a comparison function
+
+StructureLearning Policy
+
+Probs Learning Policy
+
+Replacement Policy
+
+Logging Policy
+
+#if 0
+    //range for disc parameters, one  contin pair and n copies of one onto tree
+    template<typename DiscIt,typename ContinIt,typename OntoIt>
+    field_set(DiscIt from,DiscIt to,contin_spec c,
+	      const onto_tree& tr,size_t n) : _nbool(0) {
+      build_onto(tr,n);
+      build_contin(c);
+      build_disc_range(from,to);
+    }
+    //ranges for disc, contin, and onto parameters
+    template<typename DiscIt,typename ContinIt,typename OntoIt>
+    field_set(DiscIt from,DiscIt to,ContinIt fromc,ContinIt toc,
+	      OntoIt fromo,OntoIt too) : _nbool(0) {
+      build_onto_range(fromo,too);
+      build_contin_range(fromc,toc);
+      build_disc_range(from,to);
+    }
+#endif
+    

@@ -1,0 +1,157 @@
+/****
+   Copyright 2005-2007, Moshe Looks and Novamente LLC
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+****/
+
+#include "combo/vertex.h"
+#include "reduct/reduct.h"
+#include "combo/eval.h"
+#include "util/tree.h"
+
+using namespace reduct;
+using namespace combo;
+using namespace util;
+using namespace std;
+
+class action_reduct_test : public CxxTest::TestSuite {
+public:
+  //test_simplify1 :
+  //and_seq(#1 #2 and_seq(#3 or_seq(#4 #5 or_seq(#6 #7))))
+  void test_simplify1() {
+    string tree_str="and_seq(#1 #2 and_seq(#3 or_seq(#4 #5 or_seq(#6 #7 exec_seq(#8 #9 exec_seq(#10))))))";
+
+    stringstream ss(tree_str);
+    vtree tr;
+    ss >> tr;
+
+    tree_type tr_type = infer_tree_type_fast(tr);
+
+    bool ct = check_tree_type(tr, tr_type);
+
+    TS_ASSERT(ct);
+
+    int ca = contin_arity(tr_type);
+    int s = sample_count(ca);
+
+    RndNumTable rnt(s, ca);
+
+    try {
+      mixed_action_table mt1(tr, rnt, tr_type);
+      action_reduce(tr);
+      mixed_action_table mt2(tr, rnt, tr_type);
+
+      TS_ASSERT_EQUALS(mt1,mt2);
+    }
+    catch(EvalException& e) {
+      TS_ASSERT(true);
+    }
+  }
+
+  //test_simplify2 :
+  //action_action_if(#1 #2 #2) -> and_seq(exec_seq(#1) #2)
+  void test_simplify2() {
+    string tree_str="action_action_if(#1 #2 #2)";
+
+    stringstream ss(tree_str);
+    vtree tr;
+    ss >> tr;
+
+    tree_type tr_type = infer_tree_type_fast(tr);
+
+    bool ct = check_tree_type(tr, tr_type);
+
+    TS_ASSERT(ct);
+
+    int ca = contin_arity(tr_type);
+    int s = sample_count(ca);
+
+    RndNumTable rnt(s, ca);
+
+    try {
+      mixed_action_table mt1(tr, rnt, tr_type);
+      action_reduce(tr);
+      mixed_action_table mt2(tr, rnt, tr_type);
+
+      TS_ASSERT_EQUALS(mt1,mt2);
+    }
+    catch(EvalException& e) {
+      TS_ASSERT(true);
+    }
+  }
+
+  //test_simplify3 :
+  //and_seq(#1 #2 or_seq(#3 #4 failure exec_seq(#5 #6 failure success) #6 success)) -> and_seq(#1 #2 or_seq(#3 #4 failure exec_seq(#5 #6 failure success) #6 success))
+  void test_simplify3() {
+    string tree_str="and_seq(#1 #2 or_seq(#3 #4 failure exec_seq(#5 #6 failure success) #6 success))";
+
+    stringstream ss(tree_str);
+    vtree tr;
+    ss >> tr;
+
+    tree_type tr_type = infer_tree_type_fast(tr);
+
+    bool ct = check_tree_type(tr, tr_type);
+
+    TS_ASSERT(ct);
+
+    int ca = contin_arity(tr_type);
+    int s = sample_count(ca);
+
+    RndNumTable rnt(s, ca);
+
+    try {
+      mixed_action_table mt1(tr, rnt, tr_type);
+      action_reduce(tr);
+      mixed_action_table mt2(tr, rnt, tr_type);
+
+      TS_ASSERT_EQUALS(mt1,mt2);
+    }
+    catch(EvalException& e) {
+      TS_ASSERT(true);
+    }
+  }
+
+  //test_simplify4 :
+  //and_seq(and_seq or_seq exec_seq) -> failure
+  void test_simplify4() {
+    string tree_str="and_seq(and_seq or_seq exec_seq)";
+
+    stringstream ss(tree_str);
+    vtree tr;
+    ss >> tr;
+
+    tree_type tr_type = infer_tree_type_fast(tr);
+
+    bool ct = check_tree_type(tr, tr_type);
+
+    TS_ASSERT(ct);
+
+    int ca = contin_arity(tr_type);
+    int s = sample_count(ca);
+
+    RndNumTable rnt(s, ca);
+
+    try {
+      mixed_action_table mt1(tr, rnt, tr_type);
+      action_reduce(tr);
+      mixed_action_table mt2(tr, rnt, tr_type);
+
+      TS_ASSERT_EQUALS(mt1,mt2);
+    }
+    catch(EvalException& e) {
+      TS_ASSERT(true);
+    }
+  }
+
+};

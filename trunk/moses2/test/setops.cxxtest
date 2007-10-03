@@ -1,0 +1,95 @@
+/****
+   Copyright 2005-2007, Moshe Looks and Novamente LLC
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+****/
+
+#include <cxxtest/TestSuite.h>
+
+#include <iostream>
+#include <algorithm>
+#include <set>
+#include <functional>
+
+#include "util/tree.h"
+#include "util/algorithm.h"
+#include "util/numeric.h"
+
+#include <boost/bind.hpp>
+
+using namespace std;
+using namespace __gnu_cxx;
+using namespace boost;
+
+using namespace util;
+
+class setops_test : public CxxTest::TestSuite {
+public:
+  void test_has_empty_intersec() {
+    set<int> x,y,z;
+    
+    x.insert(1);
+    x.insert(2);
+    x.insert(3);
+    
+    y.insert(4);
+    y.insert(5);
+    y.insert(6);
+
+    z.insert(3);
+    z.insert(4);
+    
+    TS_ASSERT(has_empty_intersection(x.begin(),x.end(),y.begin(),y.end(),
+				     less<int>()));
+    TS_ASSERT(has_empty_intersection(y.begin(),y.end(),x.begin(),x.end(),
+				     less<int>()));
+    TS_ASSERT(!has_empty_intersection(x.begin(),x.end(),z.begin(),z.end(),
+				      less<int>()));
+    TS_ASSERT(!has_empty_intersection(z.begin(),z.end(),y.begin(),y.end(),
+				      less<int>()));
+  }
+
+  struct set_eraser { 
+    set_eraser(set<int>& s) : se(s) { }
+    set<int>& se;
+    template<typename It>
+    void operator()(It it) { se.erase(it); }
+  };
+  struct set_inserter { 
+    set_inserter(set<int>& s) : se(s) { }
+    set<int>& se;
+    template<typename It1,typename It2>
+    void operator()(It1 it1,It2 it2) { se.insert(*it1,*it2); }
+  };
+
+  void test_insert_set_compl() {
+    /**  set<int> x,y,z;
+    
+    x.insert(1);
+    x.insert(2);
+    x.insert(3);
+    
+    y.insert(4);
+    y.insert(5);
+    y.insert(6);
+
+    z.insert(3);
+    z.insert(4);
+
+    set<int> tmp;
+
+    tmp.clear();
+    insert_set_complement(**/
+  }
+};
+

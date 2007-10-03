@@ -1,0 +1,128 @@
+Reduct:
+A Library for Reducing Programs to Normal Form, written in high-level C++
+Moshe Looks ~ moshe@metacog.org ~ 2/28/07
+
+See https://extranet.vettalabs.com:8443/bin/view/Novamente/ReductLibrary
+for specification.
+
+**************
+* Installation
+**************
+
+Do 'make' :). You will need Boost 1.33 (http://boost.org/) and a newish g++
+(reduct is known to work under Cygwin and Gentoo with 3.4.4, known *not* to
+work under Gentoo with 3.3.6). You'll need cxxtest to run & make unit tests,
+but if you don't have it, simply do 'make reductor' to make the main program
+and not the tests.
+
+***********
+* Execution
+***********
+
+Running 'reductor' starts a read-eval-print loop where program trees are
+parsed, reduced to normal form, and printed. Program trees are parenthesized
+f(x y) style - function names are outside parentheses, arguments are inside
+parentheses separated by spaces, not commas. For example:
+
+*(x /(y +(z 42)))
+
+is equivalent to:
+
+x * (y / (z + 42))
+
+Reduced programs are tested on sample inputs against the original program (for
+Boolean formulae the entire truth table may be tested).
+
+*******************
+* Code Organization
+*******************
+
+Code for the library itself (reduction rules, evaluation, etc.) goes in
+reduct/, unit tests go in test/, utility code goes in util/. Main functions
+(for executables) are in main/.
+
+Some files containing randomly generated Boolean and real-valued expressions
+are in sample/.
+
+**************
+* Architecture
+**************
+
+A reduction rule is a functor that takes a tree and an iterator some node in
+the tree as arguments, and performs some local reduction on the node and
+possibly its children. It is required that the node still be valid after the
+rule has been called (i.e., it can't be deleted, but children and other nodes
+in the subtree may be).
+
+The header reduct/reduct.h defines a mini-language for combinatorially
+composing reduction rules and executing rules. Rules are executed with:
+
+apply_rule(rule,tree,iterator);
+
+The current composition operators on rules are:
+
+sequential - execute a series of rules in sequence.
+
+downwards - execute a rule on the node, then recursively execute on all of
+the node's children.
+
+iterative - continue executing a rule on a node until it has no effect (i.e.,
+until the node and its subtree no longer change).
+
+For example, the logical reduction is defined as follows:
+
+const rule logical_reduction =
+  sequential(downwards(reduce_nots()),
+	     iterative(sequential(downwards(eval_logical_identities()),
+				  downwards(level()),
+				  downwards(insert_ands()),
+				  subtree_to_enf(),
+				  downwards(reduce_ands()),
+				  downwards(reduce_ors()))));
+
+This means that logical reduction is defined by first executing the reduce_nots
+rule downwards, then iteratively executing a sequence of rules, etc.
+
+All rules are combined to define a recursive variant type (see
+http://boost.org/doc/html/variant/tutorial.html#variant.tutorial.recursive.recursive-variant)
+called reduct::rule in reduct.h - new rules that are defined must be added to
+this list.
+
+The tree class that is being used to represent programs is an extended version
+of Kasper Peeters' tree.hh (http://www.aei.mpg.de/~peekas/tree/), and may be
+found in util/tree.h
+
+****************
+* Incompleteness
+****************
+
+The evaluator (defined in reduct/eval.h) currently only handles Boolean
+formulae). Only general reduction rules and those for Boolean formulae are
+implemented (in general_rules.h and logical_rules.h).
+
+********************
+* Coding Conventions
+********************
+
+Everything lives in a namespace according to its directory structure (all code
+in reduct/ is in namespace reduct, etc.). Try to avoid doing "using namespace
+X" at the namespace level - instead, do "using X::foo" - these declarations
+should go in using.h .
+
+Names of classes, functions, and methods are_like_this, template type arguments
+are LikeThis. Header files are .h, source files are .cc.
+
+So far there is *no* manual memory management needed anywhere in the code! If
+you must introduce some, try and keep it localized. Whenever possible, have
+methods and functions take and pass references rather than pointers. Code
+should be const correct.
+
+Use STL and Boost instead of C or roll-your-own when convenient (e.g.,
+std::string instead of char*).
+
+I try not to use more that 80 chars per column, and mostly format according to
+a K&R-like style with emacs indentation. These aren't as important as other
+conventions - feel free to use your own style if you have a strong preference,
+but try to avoid mixing styles within a single file.
+
+Have fun! :)
