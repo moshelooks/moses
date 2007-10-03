@@ -28,3 +28,7 @@ some more examples:
   * using `(x*y)/(x*z) --> y/z` in deriving `x/x --> 1`.
 
 The system should also be _easily extensible_ ; for example, adding general exponentiation and the associated rules, if desired, should be fairly easy.
+
+
+
+-- Moshe Looks
