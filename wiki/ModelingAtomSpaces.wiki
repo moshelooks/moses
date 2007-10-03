@@ -85,3 +85,6 @@ When learning model structure, we can exploit our bias to first only consider sp
 ==Acknowledgments==
 
 Thanks to Ben Goertzel, Cassio Pennachin, and Nil Geisweiller for helpful comments and discussion.
+
+
+-- Moshe Looks
