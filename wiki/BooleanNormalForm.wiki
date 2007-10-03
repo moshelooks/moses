@@ -35,3 +35,6 @@ disjunction-of-conjunctions.
 
  * For any pair of siblings' guard sets having the form http://moses.googlecode.com/files/bnf1.png and http://moses.googlecode.com/files/bnf2.png
 , where S,,1,, and S,,2,, are sets of literals, no _third_  sibling's guard set is a subset of http://moses.googlecode.com/files/bnf3.png .
+
+
+-- Moshe Looks
