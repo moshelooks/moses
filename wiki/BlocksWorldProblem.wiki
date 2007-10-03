@@ -48,3 +48,6 @@ With a few minor tweaks to improve readability, this is the language that I prop
 4) Here I invoke a "contains" function to check if stack3 contains a block of same color as the "next needed color". The Caml module doesn't have a contains function  [correction - it does, called "mem"] - the closest is "exists" which takes a predicate as its argument (contains(list,elem) is equivalent to exists(list,lambda(x) { symbol-equal(x,elem) }), or exists(list,@(symbol-equal,elem)) if we use combinatory-logic-style currying ;->). Also note that the expression for "next needed color" needs to be reused - hence solving blocksworld should benefit from a simple procedural abstraction bias (discussed but not yet implemented or even designed in complete detail for MOSES).
 
 In conclusion, the block stacking problem as formulated above appears quite challenging, but not impossible, for standalone MOSES (once all of the required elements are in place). It is worth considering to help craft approaches to list manipulation, action, and procedural abstraction.
+
+
+-- Moshe Looks
