@@ -131,3 +131,6 @@ be avoided (outside of functions/subnamespaces).
   * [http://www.math.wpi.edu/IQP/BVCalcHist/calc5.htm Basic intro to computer algebra systems, with nice examples]
 
   * [http://en.wikipedia.org/wiki/Comparison_of_computer_algebra_systems Comparison of computer algebra systems]
+
+
+-- MosheLooks - 17 Apr 2007
