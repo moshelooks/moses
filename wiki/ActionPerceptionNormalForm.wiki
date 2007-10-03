@@ -114,3 +114,6 @@ perspective) involves integrative AI rather than just MOSES...
 First of all, the interpreter will need to be extended (again) to handle these. Since the interpreter is going to continue to be extended and tweaked a fair bit, it might be worth moving to a nicer (i.e. more modular and efficient) design, after the mixed Boolean-real reductions are all done (I want these available quickly to do development and tests with MOSES which will probably take quite some time - the perception/action and higher-order stuff are less urgent).
 
 An older (and somewhat different) version of this document is archived at OldActionPerceptionNormalForm , for those curious.
+
+
+-- Moshe Looks
