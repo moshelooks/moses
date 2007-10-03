@@ -1,0 +1,158 @@
+NAME = reductlib
+EXECS = logical-reductor contin-reductor mixed-reductor full-reductor action-reductor perception-reductor tree_gen
+SUBDIRS = util reduct combo
+
+include Makefile.base
+
+# DO NOT DELETE
+
+util/lazy_random_selector.o: util/lazy_random_selector.h util/hash_map.h
+util/lazy_random_selector.o: util/numeric.h
+util/tree.o: util/tree.h
+reduct/action_reduction.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/action_reduction.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/action_reduction.o: combo/action.h combo/perception.h
+reduct/action_reduction.o: reduct/meta_rules.h combo/tree_type.h
+reduct/action_reduction.o: util/hash_map.h util/exception.h combo/using.h
+reduct/action_reduction.o: reduct/general_rules.h reduct/action_rules.h
+reduct/action_rules.o: reduct/action_rules.h reduct/reduct.h reduct/using.h
+reduct/action_rules.o: combo/vertex.h util/hash_set.h util/tree.h
+reduct/action_rules.o: util/numeric.h combo/action.h combo/perception.h
+reduct/clean_reduction.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/clean_reduction.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/clean_reduction.o: combo/action.h combo/perception.h
+reduct/clean_reduction.o: reduct/meta_rules.h combo/tree_type.h
+reduct/clean_reduction.o: util/hash_map.h util/exception.h combo/using.h
+reduct/clean_reduction.o: reduct/general_rules.h
+reduct/contin_reduction.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/contin_reduction.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/contin_reduction.o: combo/action.h combo/perception.h
+reduct/contin_reduction.o: reduct/meta_rules.h combo/tree_type.h
+reduct/contin_reduction.o: util/hash_map.h util/exception.h combo/using.h
+reduct/contin_reduction.o: reduct/general_rules.h reduct/contin_rules.h
+reduct/contin_rules.o: reduct/contin_rules.h reduct/reduct.h reduct/using.h
+reduct/contin_rules.o: combo/vertex.h util/hash_set.h util/tree.h
+reduct/contin_rules.o: util/numeric.h combo/action.h combo/perception.h
+reduct/flat_normal_form.o: reduct/flat_normal_form.h util/hash_map.h
+reduct/flat_normal_form.o: util/numeric.h util/tree.h combo/vertex.h
+reduct/flat_normal_form.o: util/hash_set.h combo/action.h combo/perception.h
+reduct/full_reduction.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/full_reduction.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/full_reduction.o: combo/action.h combo/perception.h
+reduct/full_reduction.o: reduct/meta_rules.h combo/tree_type.h
+reduct/full_reduction.o: util/hash_map.h util/exception.h combo/using.h
+reduct/full_reduction.o: reduct/general_rules.h reduct/logical_rules.h
+reduct/full_reduction.o: reduct/flat_normal_form.h util/foreach.h
+reduct/full_reduction.o: reduct/contin_rules.h reduct/mixed_rules.h
+reduct/general_rules.o: reduct/general_rules.h reduct/reduct.h reduct/using.h
+reduct/general_rules.o: combo/vertex.h util/hash_set.h util/tree.h
+reduct/general_rules.o: util/numeric.h combo/action.h combo/perception.h
+reduct/general_rules.o: combo/eval.h combo/tree_type.h util/hash_map.h
+reduct/general_rules.o: util/exception.h combo/using.h util/foreach.h
+reduct/general_rules.o: combo/action_eval.h combo/assumption.h
+reduct/logical_reduction.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/logical_reduction.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/logical_reduction.o: combo/action.h combo/perception.h
+reduct/logical_reduction.o: reduct/meta_rules.h combo/tree_type.h
+reduct/logical_reduction.o: util/hash_map.h util/exception.h combo/using.h
+reduct/logical_reduction.o: reduct/general_rules.h reduct/logical_rules.h
+reduct/logical_reduction.o: reduct/flat_normal_form.h util/foreach.h
+reduct/logical_rules.o: reduct/logical_rules.h reduct/reduct.h reduct/using.h
+reduct/logical_rules.o: combo/vertex.h util/hash_set.h util/tree.h
+reduct/logical_rules.o: util/numeric.h combo/action.h combo/perception.h
+reduct/logical_rules.o: reduct/flat_normal_form.h util/hash_map.h
+reduct/logical_rules.o: combo/tree_type.h util/exception.h combo/using.h
+reduct/logical_rules.o: util/foreach.h util/algorithm.h combo/assumption.h
+reduct/meta_rules.o: reduct/meta_rules.h combo/tree_type.h combo/vertex.h
+reduct/meta_rules.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/meta_rules.o: combo/action.h combo/perception.h util/hash_map.h
+reduct/meta_rules.o: util/exception.h combo/using.h reduct/reduct.h
+reduct/meta_rules.o: reduct/using.h util/foreach.h combo/assumption.h
+reduct/mixed_reduction.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/mixed_reduction.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/mixed_reduction.o: combo/action.h combo/perception.h
+reduct/mixed_reduction.o: reduct/meta_rules.h combo/tree_type.h
+reduct/mixed_reduction.o: util/hash_map.h util/exception.h combo/using.h
+reduct/mixed_reduction.o: reduct/general_rules.h reduct/logical_rules.h
+reduct/mixed_reduction.o: reduct/flat_normal_form.h util/foreach.h
+reduct/mixed_reduction.o: reduct/contin_rules.h reduct/mixed_rules.h
+reduct/mixed_rules.o: reduct/mixed_rules.h reduct/reduct.h reduct/using.h
+reduct/mixed_rules.o: combo/vertex.h util/hash_set.h util/tree.h
+reduct/mixed_rules.o: util/numeric.h combo/action.h combo/perception.h
+reduct/mixed_rules.o: combo/tree_type.h util/hash_map.h util/exception.h
+reduct/mixed_rules.o: combo/using.h
+reduct/perception_reduction.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/perception_reduction.o: util/hash_set.h util/tree.h util/numeric.h
+reduct/perception_reduction.o: combo/action.h combo/perception.h
+reduct/perception_reduction.o: reduct/meta_rules.h combo/tree_type.h
+reduct/perception_reduction.o: util/hash_map.h util/exception.h combo/using.h
+reduct/perception_reduction.o: reduct/general_rules.h reduct/logical_rules.h
+reduct/perception_reduction.o: reduct/flat_normal_form.h util/foreach.h
+reduct/perception_reduction.o: reduct/mixed_rules.h reduct/perception_rules.h
+reduct/perception_rules.o: reduct/perception_rules.h reduct/reduct.h
+reduct/perception_rules.o: reduct/using.h combo/vertex.h util/hash_set.h
+reduct/perception_rules.o: util/tree.h util/numeric.h combo/action.h
+reduct/perception_rules.o: combo/perception.h combo/tree_type.h
+reduct/perception_rules.o: util/hash_map.h util/exception.h combo/using.h
+reduct/perception_rules.o: combo/assumption.h
+reduct/reduct.o: reduct/reduct.h reduct/using.h combo/vertex.h
+reduct/reduct.o: util/hash_set.h util/tree.h util/numeric.h combo/action.h
+reduct/reduct.o: combo/perception.h
+combo/action.o: combo/action.h
+combo/action_eval.o: combo/action_eval.h combo/vertex.h util/hash_set.h
+combo/action_eval.o: util/tree.h util/numeric.h combo/action.h
+combo/action_eval.o: combo/perception.h util/exception.h combo/using.h
+combo/action_eval.o: combo/tree_type.h util/hash_map.h
+combo/assumption.o: combo/assumption.h combo/vertex.h util/hash_set.h
+combo/assumption.o: util/tree.h util/numeric.h combo/action.h
+combo/assumption.o: combo/perception.h
+combo/complexity.o: combo/complexity.h combo/vertex.h util/hash_set.h
+combo/complexity.o: util/tree.h util/numeric.h combo/action.h
+combo/complexity.o: combo/perception.h combo/using.h
+combo/eval.o: combo/eval.h combo/vertex.h util/hash_set.h util/tree.h
+combo/eval.o: util/numeric.h combo/action.h combo/perception.h
+combo/eval.o: combo/tree_type.h util/hash_map.h util/exception.h
+combo/eval.o: combo/using.h util/foreach.h combo/action_eval.h
+combo/perception.o: combo/perception.h
+combo/tree_type.o: combo/tree_type.h combo/vertex.h util/hash_set.h
+combo/tree_type.o: util/tree.h util/numeric.h combo/action.h
+combo/tree_type.o: combo/perception.h util/hash_map.h util/exception.h
+combo/tree_type.o: combo/using.h
+combo/vertex.o: combo/vertex.h util/hash_set.h util/tree.h util/numeric.h
+combo/vertex.o: combo/action.h combo/perception.h
+main/logical-reductor.o: reduct/reduct.h reduct/using.h combo/vertex.h
+main/logical-reductor.o: util/hash_set.h util/tree.h util/numeric.h
+main/logical-reductor.o: combo/action.h combo/perception.h combo/eval.h
+main/logical-reductor.o: combo/tree_type.h util/hash_map.h util/exception.h
+main/logical-reductor.o: combo/using.h util/foreach.h combo/action_eval.h
+main/contin-reductor.o: reduct/reduct.h reduct/using.h combo/vertex.h
+main/contin-reductor.o: util/hash_set.h util/tree.h util/numeric.h
+main/contin-reductor.o: combo/action.h combo/perception.h combo/eval.h
+main/contin-reductor.o: combo/tree_type.h util/hash_map.h util/exception.h
+main/contin-reductor.o: combo/using.h util/foreach.h combo/action_eval.h
+main/mixed-reductor.o: reduct/reduct.h reduct/using.h combo/vertex.h
+main/mixed-reductor.o: util/hash_set.h util/tree.h util/numeric.h
+main/mixed-reductor.o: combo/action.h combo/perception.h combo/eval.h
+main/mixed-reductor.o: combo/tree_type.h util/hash_map.h util/exception.h
+main/mixed-reductor.o: combo/using.h util/foreach.h combo/action_eval.h
+main/full-reductor.o: reduct/reduct.h reduct/using.h combo/vertex.h
+main/full-reductor.o: util/hash_set.h util/tree.h util/numeric.h
+main/full-reductor.o: combo/action.h combo/perception.h combo/eval.h
+main/full-reductor.o: combo/tree_type.h util/hash_map.h util/exception.h
+main/full-reductor.o: combo/using.h util/foreach.h combo/action_eval.h
+main/action-reductor.o: combo/vertex.h util/hash_set.h util/tree.h
+main/action-reductor.o: util/numeric.h combo/action.h combo/perception.h
+main/action-reductor.o: reduct/reduct.h reduct/using.h combo/eval.h
+main/action-reductor.o: combo/tree_type.h util/hash_map.h util/exception.h
+main/action-reductor.o: combo/using.h util/foreach.h combo/action_eval.h
+main/perception-reductor.o: combo/vertex.h util/hash_set.h util/tree.h
+main/perception-reductor.o: util/numeric.h combo/action.h combo/perception.h
+main/perception-reductor.o: reduct/reduct.h reduct/using.h combo/eval.h
+main/perception-reductor.o: combo/tree_type.h util/hash_map.h
+main/perception-reductor.o: util/exception.h combo/using.h util/foreach.h
+main/perception-reductor.o: combo/action_eval.h
+main/tree_gen.o: combo/tree_generation.h util/tree.h combo/vertex.h
+main/tree_gen.o: util/hash_set.h util/numeric.h combo/action.h
+main/tree_gen.o: combo/perception.h combo/tree_type.h util/hash_map.h
+main/tree_gen.o: util/exception.h combo/using.h util/selection.h
+main/tree_gen.o: util/functional.h util/dorepeat.h

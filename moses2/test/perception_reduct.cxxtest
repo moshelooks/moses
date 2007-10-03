@@ -1,0 +1,90 @@
+/****
+   Copyright 2005-2007, Moshe Looks and Novamente LLC
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+****/
+
+#include "util/tree.h"
+
+using namespace reduct;
+using namespace combo;
+using namespace util;
+using namespace std;
+
+class perception_reduct_test : public CxxTest::TestSuite {
+public:
+  //test_simplify1 :
+  //dummy_ultrametric
+  void test_simplify1() {
+    string tree_str="and(0<(+(dummy_ultrametric(#1 #3) 0.3)) 0<(+(dummy_ultrametric(#1 #2) 0.5)) 0<(+(dummy_ultrametric(#2 #3) 0.25)))";
+
+    stringstream ss(tree_str);
+    vtree tr;
+    ss >> tr;
+
+    tree_type tr_type = infer_tree_type_fast(tr);
+
+    bool ct = check_tree_type(tr, tr_type);
+
+    TS_ASSERT(ct);
+
+    int ca = contin_arity(tr_type);
+    int s = sample_count(ca);
+
+    RndNumTable rnt(s, ca);
+
+    try {
+      mixed_action_table mt1(tr, rnt, tr_type);
+      perception_reduce(tr);
+      mixed_action_table mt2(tr, rnt, tr_type);
+
+      TS_ASSERT_EQUALS(mt1,mt2);
+    }
+    catch(EvalException& e) {
+      TS_ASSERT(true);
+    }
+  }
+
+  //test_simplify2 :
+  //dummy_transitive
+  void test_simplify2() {
+    string tree_str="and(dummy_transitive(#1 #2) dummy_transitive(#2 #3) dummy_transitive(#3 #4) dummy_transitive(#1 #4))";
+
+    stringstream ss(tree_str);
+    vtree tr;
+    ss >> tr;
+
+    tree_type tr_type = infer_tree_type_fast(tr);
+
+    bool ct = check_tree_type(tr, tr_type);
+
+    TS_ASSERT(ct);
+
+    int ca = contin_arity(tr_type);
+    int s = sample_count(ca);
+
+    RndNumTable rnt(s, ca);
+
+    try {
+      mixed_action_table mt1(tr, rnt, tr_type);
+      perception_reduce(tr);
+      mixed_action_table mt2(tr, rnt, tr_type);
+
+      TS_ASSERT_EQUALS(mt1,mt2);
+    }
+    catch(EvalException& e) {
+      TS_ASSERT(true);
+    }
+  }
+
+};

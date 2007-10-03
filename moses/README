@@ -1,0 +1,83 @@
+MOSES release notes
+Moshe Looks (moshe@metacog.org), 12/19/06
+
+To compile, go into the moses directory and do 'make'. You'll need the latest
+boost libraries (http://boost.org/). If compilation still fails for weird
+reasons, you could try g++ with the -fpermissive (newer versions reject lots of
+code that was ok with older ones). If you are going to be making changes and
+recompiling frequently you'll probably want to disable -O3 in the makefile (I
+use templates liberally, so -O3 really speeds up the code, but really slows
+down compilation).
+
+The main routine (in main/main.cc) is a horrible hacked-up uncommented mess at
+this point; a todo item for the indefinite future is to rewrite this to use
+some sort of configuration files with sensible syntax (e.g., with
+http://boost.org/doc/html/program_options.html). For now, some examples:
+
+./moses 1 4 100000 1 5 0.05
+The arguments are as follows (in order)
+1) seeds the random number generator with 1
+2) sets the arity to 4
+3) runs for a total of 100,000 fitness evaluations
+4) sets the neighborhood expansion factor to 1 (you probably don't want to mess
+with this, as setting it any larger than one makes MOSES run really slowly).
+5) sets the population sizing factor to 5 (populations are sized linearly with
+this number)
+6) sets the RTR window size to be at most 5% of the population size (this is
+another one that is probably not interesting to mess with)
+
+A table with nicer parameter descriptions is on page 53 (64 in the pdf page
+numbers) of my dissertation (http://www.metacog.org/main.pdf).
+
+This configuration uses even-parity as the fitness function (the default). The
+output will be something like:
+
+making knobs for or(and and) 
+prototype: or(and and) 
+pop size = 297
+model size: 42
+minmag 3 sampled 441 best -6.011
+minmag 3 sampled 578 best -6.011
+minmag 3 sampled 716 best -6.011
+minmag 3 sampled 840 best -6.011
+minmag 3 sampled 970 best -6.011
+q size 21
+and(or(and(not(#1)) and(#3) and(not(#2) #4) and(#2 not(#4))))  9 -6
+and(or(and(not(#1)) and(not(#2)) and(#3)) or(and(#1) and(not(#2)) and(not(#3))) #4)  10 -6
+and(or(and(not(#3)) and(or(and(#1) and(not(#4))) #2) and(or(and(not(#1)) and(not(#4))) not(#2))))  12 -6
+making knobs for and(or(and(not(#1)) and(#3) and(or(not(#2)) or(#4) or) and(or(#2) or(not(#4)) or) and) or) 
+prototype: and(or(and(not(#1)) and(#3) and(or(not(#2)) or(#4) or) and(or(#2) or(not(#4)) or) and) or) 
+pop size = 107
+model size: 15
+minmag 0 sampled 1129 best -6.01
+
+"making knobs" is the program used to construct the exemplar (i.e., where MOSES
+is optimizing from). "prototype" is based on the exemplar and not so
+interesting to look at. MOSES uses a different population size based on the
+model size (number of variables that control changes to make to the exemplar
+like insertion of a new clause). A "minmag x sampled y best z" line is printed
+out for hBOA optimization within a representation; x is how far (Hamming
+distance) the best solution is from the "center of the representation", y is
+the number of fitness evaluations, z is the score of the best solution found
+(the floating point part is generally a size penalty). "q size x" means that
+there are x promising solutions that could get made into exemplars for hBOA
+optimization, though in practice one of the best+smallest solutions will
+(probabilistically). The top three solutions in the queue are the printed (#i
+is the ith variable), with their sizes and scores.
+
+./moses 1 0 100000 1 5 0.05 cfs This example does supervised
+classification. The second argumet, arity, doesn't matter here, since it is
+picked up from the training data file (which *must* be names cfs). cfs is just
+a tabule flat file of ones and zeros. Each row is a case; the first column is
+the classification, the remaining columns are the arguments. So for example, if
+cfs is:
+
+0 0 1 0
+0 0 0 0
+0 1 0 0
+1 1 1 0
+
+MOSES will learn 'and(#1 #2)'. If you want to play with the fitness function /
+size penalization, its in fitness/boolean.h
+
+Good luck!

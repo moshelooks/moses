@@ -1,0 +1,31 @@
+PROJECTS = reductlib edalib moseslib testlib
+CC = g++
+
+DEBUG_FLAGS = -O2 #-ggdb
+RELEASE_FLAGS = -O3 -DNDEBUG
+PROFILE_FLAGS = -O3 -DNDEBUG -pg
+
+#Comment to choose debug or release or profile
+OPT_FLAGS = $(DEBUG_FLAGS)
+#OPT_FLAGS = $(RELEASE_FLAGS)
+#OPT_FLAGS = $(PROFILE_FLAGS)
+
+#number of jobs to run simultaneously
+JOBS = 2
+
+LINK_FLAGS = -Wall -I./ $(OPT_FLAGS)
+COMP_FLAGS = -Wall -I./ $(OPT_FLAGS)
+
+export CC LINK_FLAGS COMP_FLAGS
+
+all: $(PROJECTS)
+
+$(PROJECTS):
+	make -j $(JOBS) -f Makefile.$@
+
+clean:
+	find -regex ".*~\|.*\.o"|xargs rm -f
+	$(foreach project,$(PROJECTS),make clean -f Makefile.$(project);)
+
+depend:
+	$(foreach project,$(PROJECTS),make depend -f Makefile.$(project);)

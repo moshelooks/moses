@@ -1,0 +1,22 @@
+SRC := $(foreach dir,$(SUBDIRS),$(wildcard $(dir)/*.cc))
+OBJ := $(patsubst %.cc,%.o,$(SRC))
+EXEC_SRC := $(patsubst %,main/%.cc,$(EXECS))
+EXEC_OBJ := $(patsubst %.cc,%.o,$(EXEC_SRC))
+
+all: $(EXECS)
+
+$(EXECS) : % : main/%.o
+
+$(EXECS): $(OBJ)
+	$(CC) $(LINK_FLAGS) $(OBJ) $(patsubst %,main/%.o,$@) -o $@
+
+%.o: %.cc
+	$(CC) $(COMP_FLAGS) $< -c -o $@
+
+clean:
+	rm -f $(EXECS)
+	rm -f $(patsubst %,%.exe*,$(EXECS))
+
+depend:
+	makedepend -fMakefile.$(NAME) -Y -- $(COMP_FLAGS) -- $(SRC) $(EXEC_SRC) 2> /dev/null
+	rm -f Makefile.$(NAME).bak
