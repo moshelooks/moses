@@ -41,6 +41,8 @@ namespace alignment {
   }
 
   score_t Scorer::compute_score(sib_it l,sib_it r) const {
+    static const score_t descent_penalty=1;
+
     //is_empty case taken out for now...
     score_t s=exact_match(l,r)+descent_penalty;
     if (go_down(*l))

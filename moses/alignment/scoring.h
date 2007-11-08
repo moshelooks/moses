@@ -52,8 +52,6 @@ struct uglyugly {
     typedef hash_map<range_pair,score_t,
 		     uglyugly > range_score_map;
 
-    static const score_t descent_penalty=1;
-
     //members
     Scorer(score_t noise) : _noise(noise) { }
 
