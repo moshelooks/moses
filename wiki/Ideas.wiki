@@ -1,2 +1,2 @@
 #labels GSoC
-Please see the [http://opencog.org/wiki/Ideas OpenCog Ideas Page].
+Please see the [http://opencog.org/wiki/Ideas#MOSES OpenCog Ideas Page].
