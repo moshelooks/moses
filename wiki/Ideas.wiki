@@ -1,10 +1,2 @@
 #labels GSoC
-= Introduction =
-
-Per the [http://code.google.com/soc/2008/faqs.html#0.1_ideas Google Summer of Code FAQ]: 
-
- An "Ideas" list should be a list of suggested student projects. This list is meant to introduce contributors to your project's needs and to provide inspiration to would-be student applicants. It is useful to classify each idea as specifically as possible, e.g. "must know Python" or "easier project; good for a student with more limited experience with C++." If your organization plans to provide an application template, it would be good to include it on your Ideas list.
-
- Keep in mind that your Ideas list should be a starting point for student applications; we've heard from past mentoring organization participants that some of their best student projects are those that greatly expanded on a proposed idea or were blue-sky proposals not mentioned on the Ideas list at all.
-
-= Ideas =
+Please see the [http://opencog.org/wiki/Ideas OpenCog Ideas Page].
