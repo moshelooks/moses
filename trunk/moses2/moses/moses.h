@@ -92,6 +92,8 @@ namespace moses {
       }
       complexity_t sum=0;
       foreach(complexity_t& p,probs) {
+        cout << "BBB" << (1<<(probs.back()-p)) << endl;
+        assert(probs.back()-p>=0);
 	p=(1<<(probs.back()-p));
 	sum+=p;
       }
