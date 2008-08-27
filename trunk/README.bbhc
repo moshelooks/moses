@@ -1,0 +1,57 @@
+Implementation of the Building Block Hillclimber (BBHC)
+Chen Shuo (master__chen@163.com) 2008-08-27
+
+To compile, copy "bbhc/main.cc" to "moses/main/main.cc" and go into the moses
+directory and do 'make'.
+
+To run the BBHC do "./moses [seed] [hlevel] [popsize] [gen]".
+[seed]:      random seed
+[hlevel]:    the numer of hierarchy levels for test hierarchical problems
+[popsize]:   population size
+[gen]:       maximum generations
+
+hlevel determines the problem size (and difficulty) - e.g. a hierarchical
+if-and-only-if problem with n levels is of size 2^n
+
+for example: "./moses 123 7 12 10", output is:
+
+BBHC HIFF~ chro length: 128 population size: 12 n generations: 10
+genration # 1, # evals 3096, best fitness 372, BBs 64, configs 127
+genration # 2, # evals 4644, best fitness 496, BBs 32, configs 63
+genration # 3, # evals 5424, best fitness 656, BBs 16, configs 31
+genration # 4, # evals 5820, best fitness 768, BBs 8, configs 15
+genration # 5, # evals 6024, best fitness 1024, BBs 4, configs 7
+
+max score: 1024
+best solution: [ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 ]
+
+You can choose the test function at line 394~400 of file "main.cc", or write a
+new one.
+
+Simple introduction of the code on BBHC:
+
+In file "BB.h", the class "BuildingBlock" represents single Building Blocks,
+BuildingBlock::_configs represents configurations of each Building Block, and
+class "BBs" represents all the building blocks on the variables.
+
+method:
+template <class Scoring> 
+BBs::void hillClimb(Assignment& state, Scoring& scoring)
+does hill climbing on a "state", based on the current BB configs.
+
+method:
+Assignment getRandomState()
+generates a random state from the current BB settings.
+
+method:
+template<typename popIter> BBs::bool updateBBs(popIter first, popIter last)
+updates Building Blocks based on the bijective priciple on the promising
+solutions ranged from "first" to "last".
+
+method:
+template<typename popIter>
+BBs::void updateBBConfigs(popIter first, popIter last)
+adds configurations of current BB, which haven't appeared yet.
