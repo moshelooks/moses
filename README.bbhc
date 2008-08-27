@@ -55,3 +55,9 @@ method:
 template<typename popIter>
 BBs::void updateBBConfigs(popIter first, popIter last)
 adds configurations of current BB, which haven't appeared yet.
+
+The BBHC is described in: Overcoming Hierarchical Difficulty by Hill-Climbing
+the Building Block Structure, by David Iclanzan, Dan Dumitrescu
+http://arxiv.org/abs/cs.NE/0702096
+
+*** EOF ***
