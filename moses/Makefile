@@ -36,6 +36,7 @@ utils/math_util.o: utils/math_util.h utils/selection.h utils/func_util.h
 utils/MedianStore.o: utils/MedianStore.h
 utils/selection.o: utils/selection.h utils/math_util.h utils/func_util.h
 utils/utils.o: utils/utils.h utils/exceptions.h
+modeling/BB.o: modeling/BB.h modeling/modeling.h
 modeling/BDe.o: modeling/BDe.h utils/func_util.h utils/math_util.h
 modeling/BDe.o: utils/MedianStore.h
 modeling/build_tree.o: modeling/build_tree.h alignment/ProtoVertex.h
@@ -80,6 +81,7 @@ main/main.o: alignment/ProtoVertex.h modeling/build_tree.h
 main/main.o: modeling/modeling.h local/lmodeling.h local/knobs.h
 main/main.o: modeling/dtree_modeling.h modeling/dtree.h modeling/Dependance.h
 main/main.o: local/moses.h modeling/dtree_learn.h fitness/join.h
+main/main.o: modeling/BB.h
 rewrite/enf.o: rewrite/enf.h utils/tree.h rewrite/logical_rewrite.h
 rewrite/enf.o: rewrite/rewrite.h utils/id.h utils/basic_types.h
 rewrite/enf.o: rewrite/rewrite_impl.h utils/math_util.h trees/TreeComp.h
